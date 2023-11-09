@@ -1,0 +1,23 @@
+﻿1)Entities klasörüne SQL'de ki tabloları temsil edecek class'lar eklenir.(Abstract ve Normal class'lar farklı klasörlerde tutulur.)
+2)Infrastructure klasörünün içerisinde oluşturulan entity'ler için Map'lemeler(Database kurallar) verilir. 
+3)Paketler kurulur.
+  install-package microsoft.entityframeworkcore.sqlserver
+  install-package microsoft.entityframeworkcore.tools
+
+4)Context klasörü açılır ve içerisinde AppDbContext class'ı eklenir.
+
+5)appsettings.json dosyasına gidip sql server bağlantılarımızı ekliyoruz.
+
+6)Oluşturuduğumuz AppDbContext ve appsettings.json dosyalarında bağlantılar Program.cs dosyasına tanıtılır. Program.cs dosyasında olmayan hiç bir yapının .NET' de geçerliliği yoktur.
+
+7)Migration ve Update database komutları çalıştırılır.
+  add-migration InitialCreate -o Infrastructure/Migrations
+  update-database
+
+8)Servisler yazılır.(Önce interface sonra class'lar eklenir.)
+
+9)Program.cs servislerin yaşam döngüleri eklenir.(AddScoped kısmı)
+
+10)DTO'lar ihtiyaç dahilinde eklenir.
+
+11)Controller eklenir ve action'lar yazılır.(HttpGet ve HttpPost Actionları)

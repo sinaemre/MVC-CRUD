@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Update Person";
+}
+@model UpdatePersonDTO
+
+<div class="row mt-3">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Kişi Güncelle</h3>
+            </div>
+            <form asp-action="UpdatePerson" method="post">
+                <input type="hidden" asp-for="Id" />
+                <div class="card-body">
+                    <div>
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Lütfen isim giriniz..." />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Surname" class="form-label"></label>
+                        <input asp-for="Surname" class="form-control" placeholder="Lütfen soyisim giriniz..." />
+                        <span asp-validation-for="Surname" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Birthdate" class="form-label"></label>
+                        <input asp-for="Birthdate" class="form-control" />
+                        <span asp-validation-for="Birthdate" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Gender" class="form-label"></label>
+                        <select asp-for="Gender" asp-items="@ViewBag.Genders" class="form-control">
+                            <option value="0" disabled="disabled" selected="selected">Cinsiyet Seçiniz</option>
+                        </select>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card-footer" style="height:55px;">
+                    <button type="submit" class="btn btn-outline-success float-end">Kaydet</button>
+                    <a class="btn btn-outline-primary float-start" asp-controller="People" asp-action="Index">Geri Dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
